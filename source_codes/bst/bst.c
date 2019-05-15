@@ -8,7 +8,7 @@ typedef struct student_node student_node;
 struct student_node {
     char name[128];
     char AM[128];
-    float grade;
+    double grade;
     student_node* left;
     student_node* right;
 };
@@ -48,7 +48,7 @@ student_node* create_students() {
         strcat(new_student->name, " ");
         strcat(new_student->name, temp);
 
-        fscanf(fp, "%f", &(new_student->grade));
+        fscanf(fp, "%lf", &(new_student->grade));
         new_student->left = NULL;
         new_student->right = NULL;
 
@@ -95,14 +95,14 @@ void modify(student_node* root, char* key) {
         scanf("%c", &ans);
         if (ans == 'y') {
             printf("Give new grade\n");
-            scanf("%f", &node->grade);
+            scanf("%lf", &node->grade);
         }
     }
 
 }
 
 void print_node(student_node* root) {
-	printf("%-30s%-15s%-15f\n", root->name, root->AM, root->grade); 
+	printf("%-30s%-15s%-15.1lf\n", root->name, root->AM, root->grade);
 }
 
 void in_order_print(student_node* root) {
@@ -162,7 +162,7 @@ student_node* delete(student_node* root, char* key) {
 
             char AM[128];
             strcpy(AM, temp->AM);
-            float grade = temp->grade;
+            double grade = temp->grade;
             char name[128];
             strcpy(name, temp->name);
 
@@ -193,7 +193,7 @@ void create_custom_node(student_node* root) {
     strcat(new_student->name, " ");
     strcat(new_student->name, temp);
 
-    scanf("%f", &(new_student->grade));
+    scanf("%lf", &(new_student->grade));
     new_student->left = NULL;
     new_student->right = NULL;
 
@@ -209,8 +209,8 @@ int main() {
     char key[128];
 
     while (choice != 5) {
-        printf("Options:\n0.Search\n1.Insert\n2.Delete\n3.Modify\n4.Print Tree\n5.Exit\n");
-        scanf("%u", &choice);
+        printf("\nOptions:\n-------\n0.Search\n1.Insert\n2.Delete\n3.Modify\n4.Print Tree\n5.Exit\n");
+        scanf("%d", &choice);
 
         switch (choice) {
         case 0:
@@ -223,7 +223,7 @@ int main() {
             else {
                 printf("Name:%s\n", node->name);
                 printf("AM:%s\n", node->AM);
-                printf("Grade:%f\n", node->grade);
+                printf("Grade:%lf\n", node->grade);
             }
             break;
         case 1:
