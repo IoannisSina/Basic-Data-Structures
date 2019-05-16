@@ -28,11 +28,9 @@ student_node* insert_node(student_node* root, student_node* new_student) {
 }
 
 
-student_node* create_students() {
+student_node* create_students(FILE* fp) {
 
     student_node* root = NULL;
-    FILE* fp;
-    fp = fopen("data.txt", "r");
 
     while (!feof(fp)) {
 
@@ -58,7 +56,6 @@ student_node* create_students() {
     fclose(fp);
 
     return root;
-
 }
 
 student_node* search(student_node* root, char* key) {
@@ -134,8 +131,10 @@ student_node* rightmost_node(student_node* root) {
 
 student_node* delete(student_node* root, char* key) {
 
-    if (!root)
+    if (!root) {
+		printf("Not Found!");
         return NULL;
+	}
 
     if (strcmp(key, root->AM) > 0)
         root->right = delete(root->right, key);
@@ -148,35 +147,28 @@ student_node* delete(student_node* root, char* key) {
             free(root);
             return NULL;
         }
-
         // 1 children
         else if (!root->left || !root->right) {
             student_node* to_return = root->left ? root->left : root->right;
-
             free(root);
-
             return to_return;
-        } else // 2 children
-        {
-            student_node* temp = rightmost_node(root->left);
+        }
+		// 2 children
+		else {
+            student_node* to_delete_node = rightmost_node(root->left);
+			
+			// copy all elements of the rightmost root of the left subtree to the root
 
-            char AM[128];
-            strcpy(AM, temp->AM);
-            double grade = temp->grade;
-            char name[128];
-            strcpy(name, temp->name);
+			strcpy(root->AM, to_delete_node->AM);
+            root->grade = to_delete_node->grade;
+            strcpy(root->name, to_delete_node->name);
 
-            delete(temp, temp->AM); // 0 or 1 children
-
-            strcpy(root->AM, AM);
-            root->grade = grade;
-            strcpy(root->name, name);
+            root->left = delete(to_delete_node, to_delete_node->AM); // 0 or 1 children
         }
 
     }
 
     return root;
-
 }
 
 void create_custom_node(student_node* root) {
@@ -198,24 +190,30 @@ void create_custom_node(student_node* root) {
     new_student->right = NULL;
 
     root = insert_node(root, new_student);
-
 }
 
-int main() {
+int main(int argc, char* argv[]) {
+
+    if(argc < 1)
+		return -1; // no file selected
+
+	FILE* fp;
+    fp = fopen(argv[1], "r");
+
     student_node* root;
-    root = create_students();
+    root = create_students(fp);
 
     int choice = -1;
     char key[128];
 
-    while (choice != 5) {
+    while (root && choice != 5) {
         printf("\nOptions:\n-------\n0.Search\n1.Insert\n2.Delete\n3.Modify\n4.Print Tree\n5.Exit\n");
         scanf("%d", &choice);
 
         switch (choice) {
         case 0:
             // search
-            printf("\n---\nInsert key to search: ");
+            printf("---\nInsert key to search: ");
             scanf("%s", key);
             student_node* node = search(root, key);
             if (node == NULL)
@@ -231,13 +229,13 @@ int main() {
             break;
         case 2:
             // delete
-            printf("\n---\nInsert key to delete: ");
+            printf("---\nInsert key to delete: ");
             scanf("%s", key);
-            delete(root, key);
+            root = delete(root, key);
             break;
         case 3:
             // modify
-            printf("\n---\nInsert key to modify: ");
+            printf("---\nInsert key to modify: ");
             scanf("%s", key);
             modify(root, key);
             break;
@@ -253,6 +251,9 @@ int main() {
         }
 
     }
+	
+	if(!root)
+		printf("Tree is Empty!\n");
 
     return 0;
 }
