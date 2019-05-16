@@ -31,11 +31,9 @@ student_node* insert_node(student_node* root, student_node* new_student) {
 }
 
 
-student_node* create_students(char* file_name) {
+student_node* create_students(FILE* fp) {
 
     student_node* root = NULL;
-    FILE* fp;
-    fp = fopen(file_name, "r");
 
     while (!feof(fp)) {
 
@@ -60,8 +58,6 @@ student_node* create_students(char* file_name) {
 		
         root = insert_node(root, new_student);
     }
-
-    fclose(fp);
 
     return root;
 }
@@ -238,10 +234,15 @@ void create_custom_node(student_node* root) {
 int main(int argc, char* argv[]) {
 
     if(argc < 1)
-	return -1; // no file selected
+		return -1; // no file selected
+
+	FILE* fp;
+    fp = fopen(argv[1], "r");
 
     student_node* root;
-    root = create_students(argv[1]);
+    root = create_students(fp);
+	
+	fclose(fp);
 
     int choice = -1;
     double key;

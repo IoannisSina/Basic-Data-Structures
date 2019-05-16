@@ -53,8 +53,6 @@ student_node* create_students(FILE* fp) {
         root = insert_node(root, new_student);
     }
 
-    fclose(fp);
-
     return root;
 }
 
@@ -202,6 +200,8 @@ int main(int argc, char* argv[]) {
 
     student_node* root;
     root = create_students(fp);
+	
+    fclose(fp);
 
     int choice = -1;
     char key[128];
