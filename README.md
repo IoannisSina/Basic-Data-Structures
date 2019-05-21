@@ -2,7 +2,7 @@
 
 ## How to run (binary_search)
 ```
-gcc binary.c ../_file_open/file_open.c<br/>
+gcc binary.c ../_file_open/file_open.c
 ./a.out ../_data/sorted_data.txt
 ```
 
