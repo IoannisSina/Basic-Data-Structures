@@ -1,7 +1,6 @@
+#include "../_file_open/file_open.h"
 #include <stdio.h>
 #include <stdlib.h>
-
-#define N 9
 
 
 void swap(int *x, int *y) {
@@ -11,13 +10,10 @@ void swap(int *x, int *y) {
 }
 
 
-int main()
-{
-    //diavasma arxeiou
-
-    //int arr[N] = {100, 58 ,3 ,99,5,6,7,50,10};
-    int arr[N] = {9,8,7,6,5,4,3,2,1};
-    //int arr[N] = {1,2,3,4,5,6,7,8,9};
+int main(int argc, char* argv[]) {
+	
+	int N;
+	int *arr = fill_array(argv[1], &N);
 
     int i, j, k;
 
@@ -29,13 +25,18 @@ int main()
         }
         arr[j+1] = to_insert;
 
-        for(k=0;k<N;k++) {
+		// show array for every iteration
+        /*for(k=0;k<N;k++)
             printf("%d ", arr[k]);
-        }
-        printf("\n");
+        
+        printf("\n");*/
 
     }
+	
+	for(k=0;k<N;k++)
+		printf("%d ", arr[k]);
 
+	free(arr);
+	
     return 0;
 }
-

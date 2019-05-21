@@ -1,9 +1,8 @@
+#include "../_file_open/file_open.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-#define N 7
-
-int interpolation(int* arr, float key) {
+int interpolation(int* arr, int N, float key) {
     int low = 0, high = N-1, next;
 
     while(arr[high] >= key && key > arr[low]) {
@@ -32,12 +31,14 @@ int interpolation(int* arr, float key) {
 
 
 
-int main()
-{
-    int arr[N] = {1, 2, 3, 4, 5, 9, 10};
-    float key = 5;
+int main(int argc, char* argv[]) {
+	
+	int N;
+	int *arr = fill_array(argv[1], &N);
 
-    int result = interpolation(arr, key);
+    float key = 2015;
+
+    int result = interpolation(arr, N, key);
     printf("%d", result);
 
 

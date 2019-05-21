@@ -1,7 +1,6 @@
+#include "../_file_open/file_open.h"
 #include <stdio.h>
 #include <stdlib.h>
-
-#define N 9
 
 
 void swap(int *x, int *y) {
@@ -10,7 +9,7 @@ void swap(int *x, int *y) {
     *y = temp;
 }
 
-int get_min_pos(int start, int *arr) {
+int get_min_pos(int start, int *arr, int N) {
 
     int position = start;
     int min = arr[start];
@@ -22,37 +21,35 @@ int get_min_pos(int start, int *arr) {
             position = i;
         }
 
-
     return position;
-
 }
 
 
-int main()
-{
-    //diavasma arxeiou
-
-    //int arr[N] = {100, 58 ,30 ,99,5,6,7,50,10};
-    int arr[N] = {9,8,7,6,5,4,3,2,1};
-    //int arr[N] = {1,2,3,4,5,6,7,8,9};
-
-
+int main(int argc, char* argv[]) {
+	
+	int N;
+	int *arr = fill_array(argv[1], &N);
 
     int i, j, k;
 
 
     for(i=0; i<N-1; i++) {  // N-1 because the last element will be the max
-        int min_pos = get_min_pos(i, arr);    // find the min for the unsorted array
+        int min_pos = get_min_pos(i, arr, N);    // find the min for the unsorted array
 
         swap(&arr[i], &arr[min_pos]);
 
-        for(k=0;k<N;k++) {
+        /*for(k=0;k<N;k++)
             printf("%d ", arr[k]);
-        }
-        printf("\n");
+		
+        printf("\n");*/
 
     }
 
+	for(k=0;k<N;k++)
+		printf("%d ", arr[k]);
+
+	free(arr);
+	
     return 0;
 }
 

@@ -1,13 +1,12 @@
+#include "../_file_open/file_open.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-     #include <time.h>
+/*#include <time.h>
      
-     clock_t start, end;
-     double cpu_time_used;
+clock_t start, end;
+double cpu_time_used;*/
 
-
-#define N 9
 
 
 void swap(int *x, int *y) {
@@ -27,6 +26,7 @@ void quicksort(int *arr, int start, int end)
     
     while(left < right)
     {
+	  printf("HERE ");
       while(arr[left]<pivot)
         left++;
       while(arr[right]>pivot)
@@ -51,36 +51,31 @@ void quicksort(int *arr, int start, int end)
 }
 
 
-int main() {
-    
-    int arr[N] = {9,8,7,6,5,5,3,2,1};
-    /*int arr[N] = {1,8,7,6,5,5,3,2,9};
-    int arr[N] = {1,2,7,6,5,5,3,8,9};
-    int arr[N] = {1,2,3,6,5,5,7,8,9};
-    int arr[N] = {1,2,3,5,5,6,7,8,9};*/
-    //int arr[N] = {1,2,4,5,5,6,7,8,9};
-    //int arr[N]={44,66,88,100,99,77,55,33,22};
-  
-  
-  
-       
-    start = clock();
+int main(int argc, char* argv[]) {
+	
+	int N;
+	int *arr = fill_array(argv[1], &N);
+	printf("%d",arr[0]);
+	
+    //start = clock();
 
 
     quicksort(arr,0,N-1);
     
-    end = clock();
-    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("%f\n", cpu_time_used);
+    //end = clock();
+    //cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+    //printf("%f\n", cpu_time_used);
   
     
     int k;
    
-    for(k=0;k<N;k++) {
-      printf("%d ", arr[k]);
-    }
+    for(k=0;k<N;k++)
+		printf("%d ", arr[k]);
     
     printf("\n");
-  
+	
+	
+	free(arr);
+	
     return 0;
 }
