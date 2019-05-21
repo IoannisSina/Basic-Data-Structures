@@ -1,8 +1,10 @@
 # Data-Structures-Project
 
 ## How to run (binary_search)
+```
 gcc binary.c ../_file_open/file_open.c<br/>
 ./a.out ../_data/sorted_data.txt
+```
 
 ## How to create new file
 You need to add:
