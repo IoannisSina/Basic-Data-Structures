@@ -1,16 +1,24 @@
 # Data-Structures-Project
 
-## How to run ( example with binary_search)
+## How to run source codes( example with binary_search)
 
 ### Linux
 ```
 gcc binary.c ../_file_open/file_open.c
-./a.out ../_data/sorted_data.txt
+./a.out ../../datasets/sorted_data.txt
 ```
 ### Windows
 ```
 gcc binary.c ../_file_open/file_open.c
-a.exe ../_data/sorted_data.txt
+a.exe ../../datasets/sorted_data.txt
+```
+
+## How to run dataset generator( example with binary_search)
+
+### Linux & Windows
+```
+javac main.java
+java main
 ```
 
 ## How to link new source code file with file_open library
