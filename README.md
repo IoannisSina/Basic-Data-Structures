@@ -4,13 +4,13 @@
 
 ### Linux
 ```
-gcc binary.c ../_file_open/file_open.c
-./a.out ../../datasets/sorted_data.txt
+gcc binary_search.c ../_help_library/help_library.c
+./a.out ../../datasets/part1/sorted/medium_data.txt
 ```
 ### Windows
 ```
-gcc binary.c ../_file_open/file_open.c
-a.exe ../../datasets/sorted_data.txt
+gcc binary_search.c ../_help_library/help_library.c
+a.exe ../../datasets/part1/sorted/medium_data.txt
 ```
 
 ## How to run dataset generator (example with binary_search)
