@@ -12,6 +12,11 @@ int* fill_array(char* filename, int *size) {
 	FILE* fp;
     fp = fopen(filename, "r");
 
+	if (!fp) {
+		printf("ERROR READING FROM FILE");
+		exit(-1);
+	}
+
 	int N;
     fscanf(fp, "%d", &N);
 	

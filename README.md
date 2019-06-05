@@ -2,35 +2,22 @@
 
 ## How to run source codes (example with binary_search)
 
-### Linux
+### Compile - Part A
 ```
-gcc binary.c ../_file_open/file_open.c
-./a.out ../../datasets/sorted_data.txt
+gcc binary.c ../_help_library/help_library.c
 ```
-### Windows
+### Compile - Part B
 ```
-gcc binary.c ../_file_open/file_open.c
-a.exe ../../datasets/sorted_data.txt
+gcc menu.c bstA.c bstB.c hashing.c
+```
+
+## Run
+```
+./a.out dataset.txt
 ```
 
 ## How to run dataset generator (example with binary_search)
-
-### Linux & Windows
 ```
 javac main.java
 java main
 ```
-
-## How to link new source code file with file_open library
-You need to add:
-1. #include "../_file_open/file_open.h"
-
-2. int main(int argc, char* argv[]) {
-	int N;
-    int *arr = fill_array(argv[1], &N);
-    
-	/* your code */
-	
-    free(arr);
-    return 0;
-  }
