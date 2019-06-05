@@ -6,6 +6,7 @@
 ```
 gcc binary.c ../_help_library/help_library.c
 ```
+
 ### Compile - Part B
 ```
 gcc menu.c bstA.c bstB.c hashing.c
