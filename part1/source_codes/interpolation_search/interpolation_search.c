@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
     scanf("%d", &key);
 
     clock_t begin = clock();
-    int result = interpolation(arr, N, key);
+    int pos = interpolation(arr, N, key);
     clock_t end = clock();
 
     if (pos == -1)

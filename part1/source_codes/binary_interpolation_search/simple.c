@@ -17,7 +17,7 @@ int binary_interpolation(int *arr, int left, int right, int key) {
         return left;
 
     int size = right - left + 1;
-    int mid = (int)(size * (float)(key - arr[left]) / (arr[right] - arr[left]));
+	int mid = left + (((float)size / abs(arr[right] - arr[left])) * abs(key - arr[left]));
 
 
 	// when the array has less than 4 elements sqrt(size) returns 1. So we can just do linear search

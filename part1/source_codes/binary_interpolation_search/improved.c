@@ -17,7 +17,7 @@ int binary_interpolation_improved(int *arr, int left, int right, int key) {
         return left;
 
     int size = right - left + 1;
-    int mid = (int)(size * (float)(key - arr[left]) / (arr[right] - arr[left]));
+	int mid = left + (((float)size / abs(arr[right] - arr[left])) * abs(key - arr[left]));
 
     // when the array has less than 4 elements sqrt(size) returns 1. So we can just do linear search
     if (size <= 3) {
@@ -65,7 +65,7 @@ int binary_interpolation_improved(int *arr, int left, int right, int key) {
 
     }
 	
-	// like simple ------------------------
+	// binary search
 	
     if (key < arr[left] || key > arr[right])
         return -1;
@@ -77,7 +77,6 @@ int binary_interpolation_improved(int *arr, int left, int right, int key) {
         return left;
 
     size = right - left + 1;
-    mid = (int)(size * (float)(key - arr[left]) / (arr[right] - arr[left]));
 
 
 	// when the array has less than 4 elements sqrt(size) returns 1. So we can just do linear search
@@ -89,42 +88,21 @@ int binary_interpolation_improved(int *arr, int left, int right, int key) {
 
         return -1;
     }
-
-
-	if (key == arr[mid])
-        return mid;
-    else if (key > arr[mid]) {
-		    int i = 1;
-        int next_mid = (int)(mid + i * sqrt(size));
-        while (next_mid < right && key > arr[next_mid]) { // right steps
-            i++;
-            next_mid = (int)(mid + i * sqrt(size));
-        }
-
-        if (next_mid > right) {	// when next_mid is out of bounds. key is between (next_mid-sqrt(n), right]
-            left = mid + (i - 1) * sqrt(size) + 1;
-        } else {
-            right = next_mid;
-            left = mid + (i - 1) * sqrt(size);
-        }
-
-    } else if (key < arr[mid]) {
-		    int i = 1;
-        int next_mid = (int)(mid - i * sqrt(size));
-        while (next_mid > left && key < arr[next_mid]) { // left steps
-            i++;
-            next_mid = (int)(mid - i * sqrt(size));
-        }
-
-        if (next_mid < left) { // when next_mid is out of bounds. key is between [left, next_mid-sqrt(n))
-            right = mid - (i - 1) * sqrt(size) - 1;
-        } else {
-            right = mid - (i - 1) * sqrt(size);
-            left = mid - i * sqrt(size);
-        }
-
-    }
 	
+	while (right - left > sqrt(size) && left <= right) {
+        int m = (left + right) / 2;
+		
+        if (arr[m] == key)
+            return m;
+        if (arr[m] < key)
+            left = m + 1;
+        else
+            right = m - 1;
+	}
+	
+	if(left > right)
+		return -1;
+
     return binary_interpolation_improved(arr, left, right, key);
 }
 
