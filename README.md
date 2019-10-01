@@ -22,3 +22,8 @@ gcc menu.c bstA.c bstB.c hashing.c
 javac main.java
 java main
 ```
+
+## Team
+Apostolos Kontarinis
+John Sinas
+Agisilaos Kounelis
