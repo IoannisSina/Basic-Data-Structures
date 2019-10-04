@@ -24,6 +24,6 @@ java main
 ```
 
 ## Team
-Apostolos Kontarinis
-John Sinas
+Apostolos Kontarinis<br>
+John Sinas<br>
 Agisilaos Kounelis
