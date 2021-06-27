@@ -18,7 +18,8 @@ Among the source codes there is also a library (help_library.c, help_library.h) 
 
 
 
-## Part 1 - Sorting Algorithms
+## Part 1
+### Sorting Algorithms
 
 We implemented:
 - O(n<sup>2</sup>) | Bubble Sort - Insertion Sort - Selection Sort
@@ -28,7 +29,7 @@ We implemented:
 ![sorting charts](https://user-images.githubusercontent.com/36283973/123538029-4f651900-d73b-11eb-8b89-a1a9777c94db.png)
 
 
-## Part 2 - Searching Algorithms
+### Searching Algorithms
 
 We implemented:
 - Linear Search O(n)
@@ -38,7 +39,7 @@ We implemented:
 
 
 
-### How was the average case time measured?
+#### How was the average case time measured?
 In contrast to sorting algorithms, for the searching algorithms time is as a function of the size of the dataset and the key given by the user. Therefore it is not possible with just a random key selection to find mean case complexity.
 
 The most "fair" way to measure the time for the average case is to find the amortized complexity of the algorithm. That is, to measure the total time required to do a search taking as a search key each element of the dataset and in the end divide by the number of elements. The linear and binary search algorithms are not affected by distribution unlike interpolation search. Due to the aforementioned fact, the dataset has a uniform distribution (interpolation search has maximum performance). According to the measurements linear search can not be represented on the same graph.
@@ -46,6 +47,13 @@ The most "fair" way to measure the time for the average case is to find the amor
 
 ![searching charts](https://user-images.githubusercontent.com/36283973/123538527-019de000-d73e-11eb-9b18-d7e2952dc6f5.png)
 
+
+## Part 2
+
+Implemented:
+- Binary Search Tree based on University Registration Number
+- Binary Search Tree based on Grades
+- Hashing
 
 
 ## How to run source codes (example with binary_search) 🏃
@@ -65,7 +73,7 @@ gcc menu.c bstA.c bstB.c hashing.c
 ./a.out dataset.txt
 ```
 
-## How to run dataset generator (example with binary_search)
+## How to run dataset generator
 ```
 javac main.java
 java main
@@ -75,4 +83,3 @@ java main
 Apostolos Kontarinis<br>
 John Sinas<br>
 Agisilaos Kounelis
-
