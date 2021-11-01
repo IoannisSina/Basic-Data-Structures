@@ -1,6 +1,6 @@
 # Data Structures - Project :chart_with_downwards_trend:
 
-This is our university project for Data Structures course. CEID - 2017/18
+This is our university project for Data Structures course. [CEID](https://www.ceid.upatras.gr/en) - 2017/18
 
 All codes were implemented in C and run successfully. The measurements were made for a big number of datasets and experimental results were compared with theory.
 
@@ -79,7 +79,7 @@ javac main.java
 java main
 ```
 
-## Team
+## Team 👪
 [Apostolos Kontarinis](https://github.com/AposKonti)<br>
 [Ioannis Sina](https://github.com/IoannisSina)<br>
 [Agisilaos Kounelis](https://github.com/kounelisagis)
