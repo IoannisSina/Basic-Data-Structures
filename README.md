@@ -80,6 +80,6 @@ java main
 ```
 
 ## Team
-Apostolos Kontarinis<br>
-Ioannis Sina<br>
-Agisilaos Kounelis
+[Apostolos Kontarinis](https://github.com/AposKonti)<br>
+[Ioannis Sina](https://github.com/IoannisSina)<br>
+[Agisilaos Kounelis](https://github.com/kounelisagis)
