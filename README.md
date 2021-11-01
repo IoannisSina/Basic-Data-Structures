@@ -81,5 +81,5 @@ java main
 
 ## Team
 Apostolos Kontarinis<br>
-John Sinas<br>
+Ioannis Sina<br>
 Agisilaos Kounelis
